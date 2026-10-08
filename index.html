@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is It Friday?</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        color: #333;
+    }
+
+    #message {
+        font-size: 3rem;
+        max-width: 900px;
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div id="message"></div>
+
+<script>
+const messages = {
+    0: "Weekend ending soon. Please remain calm.",
+    1: "Friday is 80% loading...",
+    2: "Friday is visible on the horizon, but binoculars may be required. 🔭",
+    3: "It's Nano-Friday™. Technically closer, emotionally still far away. 🤏",
+    4: "We're almost there. It's Mini-Friday today.",
+    5: "Congratulations. You've unlocked Friday. Weekend access is now available. 🎉",
+    6: "Weekend in progress. Friday was a success."
+};
+
+document.getElementById("message").textContent =
+    messages[new Date().getDay()];
+</script>
+
+</body>
+</html>
