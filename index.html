@@ -6,23 +6,36 @@
 <title>Is It Friday?</title>
 
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        color: #333;
-    }
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
 
-    #message {
-        font-size: 3rem;
-        max-width: 900px;
-        padding: 20px;
-    }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#message {
+    width: 95vw;
+    height: 95vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.1;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
 </style>
 </head>
 <body>
@@ -42,6 +55,31 @@ const messages = {
 
 document.getElementById("message").textContent =
     messages[new Date().getDay()];
+
+function fitText() {
+    let min = 10;
+    let max = 1000;
+
+    while (max - min > 1) {
+        const size = Math.floor((min + max) / 2);
+        message.style.fontSize = size + "px";
+
+        const fits =
+            message.scrollWidth <= message.clientWidth &&
+            message.scrollHeight <= message.clientHeight;
+
+        if (fits) {
+            min = size;
+        } else {
+            max = size;
+        }
+    }
+
+    message.style.fontSize = min + "px";
+}
+
+fitText();
+window.addEventListener("resize", fitText);
 </script>
 
 </body>
